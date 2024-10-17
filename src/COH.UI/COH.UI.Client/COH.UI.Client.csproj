@@ -13,8 +13,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\COH.Infrastructure\COH.Infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>

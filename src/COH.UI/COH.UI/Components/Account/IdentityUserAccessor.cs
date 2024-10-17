@@ -1,4 +1,4 @@
-using COH.UI.Data;
+﻿using COH.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 
 namespace COH.UI.Components.Account;

@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
 using Ardalis.SharedKernel;
 using COH.Core.ContributorAggregate;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace COH.Infrastructure.Data;
 public class AppDbContext(DbContextOptions<AppDbContext> options,
-  IDomainEventDispatcher? dispatcher) : DbContext(options)
+  IDomainEventDispatcher? dispatcher) : IdentityDbContext<ApplicationUser>(options)
 {
   private readonly IDomainEventDispatcher? _dispatcher = dispatcher;
 

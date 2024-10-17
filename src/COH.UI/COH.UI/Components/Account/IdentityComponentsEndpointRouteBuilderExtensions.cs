@@ -1,8 +1,8 @@
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using System.Text.Json;
+using COH.Infrastructure.Data;
 using COH.UI.Components.Account.Pages;
 using COH.UI.Components.Account.Pages.Manage;
-using COH.UI.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
 
-namespace Microsoft.AspNetCore.Routing;
+namespace COH.UI.Components.Account;
 internal static class IdentityComponentsEndpointRouteBuilderExtensions
 {
   // These endpoints are required by the Identity Razor components defined in the /Components/Account/Pages directory of this project.
