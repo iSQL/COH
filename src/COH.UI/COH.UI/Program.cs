@@ -14,10 +14,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
     .AddInteractiveWebAssemblyComponents();
+
 builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+builder.Services.AddScoped<RoleUserManager, RoleUserManager>();
+
 builder.Services.AddAuthentication(options =>
 {
   options.DefaultScheme = IdentityConstants.ApplicationScheme;
@@ -26,9 +29,10 @@ builder.Services.AddAuthentication(options =>
     .AddIdentityCookies();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-.AddEntityFrameworkStores<AppDbContext>()
-.AddSignInManager()
-.AddDefaultTokenProviders();
+  .AddRoles<IdentityRole>()
+  .AddEntityFrameworkStores<AppDbContext>()
+  .AddSignInManager()
+  .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 

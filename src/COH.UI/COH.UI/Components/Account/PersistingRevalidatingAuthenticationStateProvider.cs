@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Security.Claims;
+using Ardalis.GuardClauses;
 using COH.Infrastructure.Data;
 using COH.UI.Client;
 using Microsoft.AspNetCore.Components;
@@ -87,13 +88,15 @@ internal sealed class PersistingRevalidatingAuthenticationStateProvider : Revali
     {
       var userId = principal.FindFirst(options.ClaimsIdentity.UserIdClaimType)?.Value;
       var email = principal.FindFirst(options.ClaimsIdentity.EmailClaimType)?.Value;
-
+      var role = principal.FindFirst(options.ClaimsIdentity.RoleClaimType)?.Value;
+      Guard.Against.NullOrEmpty(role);
       if (userId != null && email != null)
       {
         state.PersistAsJson(nameof(UserInfo), new UserInfo
         {
           UserId = userId,
           Email = email,
+          Role = role
         });
       }
     }
