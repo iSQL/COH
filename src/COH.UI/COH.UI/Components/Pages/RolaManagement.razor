@@ -3,8 +3,8 @@
 @using COH.UI.Components.Account
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject RoleUserManager RoleUserManager
-
 @rendermode InteractiveServer
+
 <h3>Role Management</h3>
 
 <button @onclick="CreateNewRole">Create New Role</button>
@@ -28,7 +28,7 @@
     }
 
     /// <summary>
-    /// Currently assigns admin role to logged in user
+    /// Assigns admin role to a currently logged in user
     /// </summary>
     /// <returns></returns>
     private async Task AssignRoleToUser()
