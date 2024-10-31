@@ -37,8 +37,7 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
-//Testing out
-builder.Services.AddSingleton<RabbitMQSender, RabbitMQSender>();
+// Sandbox injections
 builder.Services.AddSingleton<RabbitMQService>();
 
 
