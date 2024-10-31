@@ -1,0 +1,13 @@
+﻿@page "/sandbox"
+@using COH.Infrastructure.RabbitMQ
+@inject RabbitMQService RMQ
+@rendermode InteractiveServer
+
+<h3>Sandbox</h3>
+<button @onclick="SendRabbitMQMessage">Send RabbitMQ message</button>
+
+@code {
+    void SendRabbitMQMessage(){
+        RMQ.SendMessage("Hello from WEB");
+    }
+}

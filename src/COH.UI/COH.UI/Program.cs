@@ -1,4 +1,5 @@
 ﻿using COH.Infrastructure.Data;
+using COH.Infrastructure.RabbitMQ;
 using COH.UI.Client.Pages;
 using COH.UI.Components;
 using COH.UI.Components.Account;
@@ -35,6 +36,11 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
   .AddDefaultTokenProviders();
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+//Testing out
+builder.Services.AddSingleton<RabbitMQSender, RabbitMQSender>();
+builder.Services.AddSingleton<RabbitMQService>();
+
 
 var logger = Log.Logger = new LoggerConfiguration()
   .Enrich.FromLogContext()
